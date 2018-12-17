@@ -1,0 +1,30 @@
+.topbar {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    color: #757575;
+    height: 70px;
+    padding: 12px 15px;
+    border-bottom: solid 1px #dee4e9;
+    z-index: 100;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    background-image: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#ffffff));
+    background-image: -webkit-linear-gradient(left, #ffffff, #ffffff);
+    background-image: -moz-linear-gradient(left, #ffffff, #ffffff);
+    background-image: -ms-linear-gradient(left, #ffffff, #ffffff);
+    background-image: -o-linear-gradient(left, #ffffff, #ffffff);
+    background-image: linear-gradient(left, #ffffff, #ffffff);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', gradientType='1');
+}
+
+
+.wallet-wrapper{
+    margin-top:70px;
+    margin-left:250px;
+    display:flex;
+    flex-direction: row;
+}

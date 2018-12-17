@@ -1,0 +1,17 @@
+:host{
+    width:100%;
+}
+.vignette_wrapper{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top:20px;
+    width:100%;
+}
+
+.vignette{
+    margin-left:10px;
+    margin-right:10px;
+    width:300px;
+}

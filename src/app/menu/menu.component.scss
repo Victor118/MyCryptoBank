@@ -1,0 +1,75 @@
+$menu-width: 250px;
+
+.layout-menu-wrapper {
+    padding-top: 15px;
+    left: 0;
+    position: fixed;
+    top: 70px;
+    height: 100%;
+    width: $menu-width;
+    border-right: solid 1px #dee4e9;
+    background-color: #ffffff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-transition: left 0.3s;
+    -o-transition: left 0.3s;
+    -webkit-transition: left 0.3s;
+    transition: left 0.3s;
+}
+
+a.active-menuitem {
+    border-bottom: 0 none;
+    background-color: #F6F9FB;
+    color: #3984b8!important;
+}
+
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.layout-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 120px 0;
+    box-sizing: border-box;
+    width:$menu-width;
+}
+
+.layout-menu-wrapper .layout-menu li > a {
+    position: relative;
+    color: #7d8286;
+    text-decoration: none;
+    padding: 10px 16px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.layout-menu-wrapper .layout-menu li > ul {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.layout-menu-wrapper .layout-menu li > ul li a {
+    padding-left: 32px;
+}
+

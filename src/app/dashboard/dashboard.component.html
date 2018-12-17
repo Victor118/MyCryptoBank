@@ -1,0 +1,11 @@
+<div class="vignette_wrapper">
+
+  <p-card *ngFor="let asset of assets" class="vignette">
+    <img [src]="'./assets/images/coins/'+asset.symbol+'.png'" width="32px" height="32px"/>
+    {{asset.symbol}}
+    <div>{{asset.balance }} </div>
+    <div>
+        <p-chart type="line" [data]="data" [options]="options" (onDataSelect)="selectData($event)"></p-chart>
+    </div>
+</p-card>
+</div>

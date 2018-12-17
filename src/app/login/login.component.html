@@ -1,0 +1,23 @@
+<p-card  class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <div class="login-content">
+      <!--div class="login-header">Login</div-->
+    <img class="image-login" width="100" height="100" src="./assets/images/avatar_login.png"/>
+    
+      <div class="ui-inputgroup" style="margin-top:10px;width:80%;">
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input style="width:100%;" type="text" pInputText placeholder="Username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.username.errors }">         
+      </div>
+      <div class="ui-inputgroup" style="margin-top:10px;width:80%;">
+          <span class="ui-inputgroup-addon"><i class="fa fa-lock"></i></span>
+          <input style="width:100%;" type="password" pInputText placeholder="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }">         
+      </div>
+      
+      <button pButton type="submit" style="height:30px;width:100px;margin-top:15px;padding-top:3px;" class="ui-button-raised ui-button-rounded">LOGIN</button>
+    </div>
+    
+    
+</form>
+</p-card>
+<a [routerLink]="['/create-account']" routerLinkActive="active" class="new-account-link" style="margin-top:80px;">Create new account</a>
