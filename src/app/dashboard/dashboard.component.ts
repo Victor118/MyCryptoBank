@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Asset} from '../models/asset';
 import {ChainStore} from "bitsharesjs";
 import {MarketService} from '../services/market.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -55,7 +56,7 @@ export class DashboardComponent implements OnInit {
     })
 
     this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: ['', '', '', '', '', '', ''],
       datasets: [
           {
          
