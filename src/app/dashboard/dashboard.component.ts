@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit {
     let dateEndString = dateEnd.getFullYear() + "-" + ("0"+(dateEnd.getMonth()+1)).slice(-2) + "-" +("0" + dateEnd.getDate()).slice(-2)+ "T" + ("0" + dateEnd.getHours()).slice(-2) + ":" + ("0" + dateEnd.getMinutes()).slice(-2)+ ":" + ("0" + dateEnd.getSeconds()).slice(-2);
     console.log(dateEndString);
     console.log(dateStartString);
-    this.marketService.getTradeHistory("BTS","USD",dateStartString,dateEndString).then((data)=>{
+    this.marketService.getTradeHistory("BTS","USD",dateEndString,dateStartString).then((data)=>{
       console.log("Market data ");
       console.log(data);
       //console.log(data.toJS());
