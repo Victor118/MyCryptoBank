@@ -5,7 +5,7 @@
     {{asset.symbol}}
     <div>{{asset.balance }} </div>
     <div>
-        <p-chart type="line" [data]="data" [options]="options" (onDataSelect)="selectData($event)"></p-chart>
+        <p-chart type="line" [data]="asset.data" [options]="options" (onDataSelect)="selectData($event)"></p-chart>
     </div>
 </p-card>
 </div>

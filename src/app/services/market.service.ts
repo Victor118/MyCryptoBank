@@ -7,7 +7,7 @@ export class MarketService {
   constructor() { }
 
 
-  public getTradeHistory = (base:string,quote:string,dateStart:string,dateEnd:string)=>{
+  public getTradeHistory = async (base:string,quote:string,dateStart:string,dateEnd:string)=>{
 
     return Apis.instance().db_api().exec( "get_trade_history", [ base,quote,dateStart,dateEnd,10 ] );
 

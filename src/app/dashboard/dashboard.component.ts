@@ -19,22 +19,66 @@ export class DashboardComponent implements OnInit {
     {
       asset_type:"1.3.0",
       symbol:"BTS",
-      balance:0
+      balance:0,
+      data:{
+      labels: ['', '', '', '', '', '', '','','',''],
+      datasets: [
+          {
+         
+              data: [],
+              fill: true,
+              borderColor: '#4bc0c0'
+          }
+      ]
+  }
     },
     {
       asset_type:"1.3.121",
       symbol:"bitUSD",
-      balance:0
+      balance:0,
+      data:{
+      labels: ['', '', '', '', '', '', '','','',''],
+      datasets: [
+          {
+         
+              data: [],
+              fill: true,
+              borderColor: '#4bc0c0'
+          }
+      ]
+  }
     },
     {
       asset_type:"1.3.113",
       symbol:"bitCNY",
-      balance:0
+      balance:0,
+      data:{
+      labels: ['', '', '', '', '', '', '','','',''],
+      datasets: [
+          {
+         
+              data: [],
+              fill: true,
+              borderColor: '#4bc0c0'
+          }
+      ]
+  }
     },
     {
       asset_type:"1.3.861",
-      symbol:"open.BTC",
-      balance:0
+      symbol:"OPEN.BTC",
+      balance:0,
+      data:{
+      labels: ['', '', '', '', '', '', '','','',''],
+      datasets: [
+          {
+         
+              data: [],
+              fill: true,
+              borderColor: '#4bc0c0'
+          }
+      ]
+  }
     }
   ];
 
@@ -68,7 +112,7 @@ export class DashboardComponent implements OnInit {
   }
   }
 
-  ngOnInit() {
+   ngOnInit() {
     this.account = this.accountService.fullAccount;
     this.balances = this.accountService.fullAccount.balances;
     for (let key in this.balances) {
@@ -90,24 +134,35 @@ export class DashboardComponent implements OnInit {
         }
       })
     }
-    let dateStart = new Date();
-    let dateEnd = new Date();
-    dateStart.setDate( dateStart.getDate() - 10);
-    let dateStartString = dateStart.getFullYear() + "-" + ("0"+(dateStart.getMonth()+1)).slice(-2) + "-" +("0" + dateStart.getDate()).slice(-2)+ "T" + ("0" + dateStart.getHours()).slice(-2) + ":" + ("0" + dateStart.getMinutes()).slice(-2)+ ":" + ("0" + dateStart.getSeconds()).slice(-2);
-    let dateEndString = dateEnd.getFullYear() + "-" + ("0"+(dateEnd.getMonth()+1)).slice(-2) + "-" +("0" + dateEnd.getDate()).slice(-2)+ "T" + ("0" + dateEnd.getHours()).slice(-2) + ":" + ("0" + dateEnd.getMinutes()).slice(-2)+ ":" + ("0" + dateEnd.getSeconds()).slice(-2);
-    console.log(dateEndString);
-    console.log(dateStartString);
-    this.marketService.getTradeHistory("BTS","USD",dateEndString,dateStartString).then((data)=>{
-      console.log("Market data ");
-      console.log(data);
-      //console.log(data.toJS());
-    }, (error)=>{
-      console.log("Market data error ");
-      console.log(error);
-    })
+    this.assets.forEach(async(asset)=>{
+      let dateStart = new Date();
+      let dateEnd = new Date();
+      for(let i =0;i<10;i++){
 
-    console.log("BALANCES ...");
-    console.log(this.balances);
+        dateStart.setDate( dateStart.getDate() - 1);
+        dateEnd.setDate( dateStart.getDate());
+        let dateStartString = dateStart.getFullYear() + "-" + ("0"+(dateStart.getMonth()+1)).slice(-2) + "-" +("0" + dateStart.getDate()).slice(-2)+ "T00:00:00"; 
+        let dateEndString = dateEnd.getFullYear() + "-" + ("0"+(dateEnd.getMonth()+1)).slice(-2) + "-" +("0" + dateEnd.getDate()).slice(-2)+ "T23:59:59"; 
+        console.log(dateEndString);
+        console.log(dateStartString);
+        if(asset.symbol !== "bitUSD"){
+          let data = await this.marketService.getTradeHistory("USD",asset.symbol,dateEndString,dateStartString);
+          if(data && data.length>0){
+            console.log("resultat du market data",data);
+            asset.data.datasets[0].data[i]=parseFloat(data[0].price);
+            
+          }else if(i>0){
+            asset.data.datasets[0].data[i]=asset.data.datasets[0].data[i-1];
+          }else{
+            asset.data.datasets[0].data[i]=0;
+          }
+        }
+
+ 
+      }
+      console.log("Asset data :",asset.data);
+
+    });
   }
 
 }
