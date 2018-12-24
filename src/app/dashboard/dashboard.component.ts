@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
       datasets: [
           {
          
-              data: [],
+              data: [0.65, 0.59, 0.80, 0.81, 0.56, 0.55, 0.40,0.35,0.23,0.90],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
       datasets: [
           {
          
-              data: [],
+              data: [65, 59, 80, 81, 56, 55, 40,35,23,90],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
       datasets: [
           {
          
-              data: [],
+              data: [65, 59, 80, 81, 56, 55, 40,35,23,90],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
       datasets: [
           {
          
-              data: [],
+              data: [65, 59, 80, 81, 56, 55, 40,35,23,90],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -85,6 +85,15 @@ export class DashboardComponent implements OnInit {
   data:any;
 
   options = {
+    
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero:true
+              }
+          }]
+      },
+  
     title:{
       display:false
     },
@@ -135,6 +144,17 @@ export class DashboardComponent implements OnInit {
       })
     }
     this.assets.forEach(async(asset)=>{
+      let dataCopy={
+        labels: ['', '', '', '', '', '', '','','',''],
+        datasets: [
+            {
+           
+                data: [],
+                fill: true,
+                borderColor: '#4bc0c0'
+            }
+        ]
+    }
       let dateStart = new Date();
       let dateEnd = new Date();
       for(let i =0;i<10;i++){
@@ -149,13 +169,15 @@ export class DashboardComponent implements OnInit {
           let data = await this.marketService.getTradeHistory("USD",asset.symbol,dateEndString,dateStartString);
           if(data && data.length>0){
             console.log("resultat du market data",data);
-            asset.data.datasets[0].data[i]=parseFloat(data[0].price);
+            dataCopy.datasets[0].data[i]=parseFloat(data[0].price);
             
           }else if(i>0){
-            asset.data.datasets[0].data[i]=asset.data.datasets[0].data[i-1];
+            dataCopy.datasets[0].data[i]=asset.data.datasets[0].data[i-1];
           }else{
-            asset.data.datasets[0].data[i]=0;
+            dataCopy.datasets[0].data[i]=0;
           }
+
+          asset.data = Object.assign({}, dataCopy);
         }
 
  
