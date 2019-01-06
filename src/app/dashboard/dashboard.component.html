@@ -1,11 +1,19 @@
 <div class="vignette_wrapper">
 
   <p-card *ngFor="let asset of assets" class="vignette">
-    <img [src]="'./assets/images/coins/'+asset.symbol+'.png'" width="32px" height="32px"/>
-    {{asset.symbol}}
-    <div>{{asset.balance }} </div>
+    <div class="card-header">
+        <div class="card-symbol">
+            <img [src]="'./assets/images/coins/'+asset.symbol+'.png'" width="32px" height="32px"/>
+            <span>{{asset.symbol}}</span>
+        </div>
+        <div class="header-balance">{{asset.balance }} </div>
+    </div>
     <div>
         <p-chart type="line" [data]="asset.data" [options]="options" (onDataSelect)="selectData($event)"></p-chart>
     </div>
+    <div class="card-buttons">
+        <button icon="fa fa-paper-plane-o" class="vignette-button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+    </div>
 </p-card>
+
 </div>

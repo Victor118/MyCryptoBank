@@ -21,6 +21,10 @@ import { MenuComponent } from './menu/menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {ChartModule} from 'primeng/chart';
 import {MarketService} from './services/market.service';
+import {TransfertComponent} from "./transfert/transfert.component";
+import {TransfertService} from "./services/transfert.service";
+import { NumericTextboxModule } from 'ngx-numeric-textbox';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 const appRoutes: Routes = [
   
@@ -28,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'wallet', component: WalletComponent, children: [
     { path: 'dashboard', component: DashboardComponent},
+    { path: 'transfert', component: TransfertComponent}
   ]}
 
 ]
@@ -44,6 +49,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    NumericTextboxModule,
+    AutoCompleteModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
@@ -53,9 +60,10 @@ const appRoutes: Routes = [
     WaitingComponent,
     CreateAccountComponent,
     MenuComponent,
-    DashboardComponent
+    DashboardComponent,
+    TransfertComponent
   ],
-  providers: [AccountService,AlertService,LoadingService,MarketService],
+  providers: [AccountService,AlertService,LoadingService,MarketService,TransfertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

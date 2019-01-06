@@ -11,7 +11,40 @@
 }
 
 .vignette{
+    position:relative;
     margin-left:10px;
     margin-right:10px;
+    margin-top:10px;
     width:300px;
+}
+.card-header{
+    display: flex;
+    flex-direction: row;
+    padding-bottom:8px;
+}
+.card-symbol{
+    flex:1;
+}
+
+.header-balance{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card-buttons{
+    position:absolute;
+    bottom:-10px;
+}
+
+.vignette-button{
+    width:40px;
+    height:40px;
+    border-radius: 20px;
+    font-size: 20px;
+    //background-color:rgb(255, 255, 255);
+
+    z-index:4;
+    &:hover{
+        cursor:pointer;
+    }
 }

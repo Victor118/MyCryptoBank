@@ -121,4 +121,8 @@ export class AccountService {
       console.log(error);
     });
   }
+
+  public lookupAccounts =(searchStr:string)=>{
+    return Apis.instance().db_api().exec("lookup_accounts", [searchStr,20]);
+  }
 }

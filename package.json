@@ -25,6 +25,8 @@
     "chart.js": "^2.7.3",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
+    "ngx-numeric-textbox": "^6.0.0",
+    "numeral": "^2.0.6",
     "primeicons": "^1.0.0",
     "primeng": "^6.1.5",
     "rxjs": "^5.5.6",

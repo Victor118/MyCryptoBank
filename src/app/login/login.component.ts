@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
 
 
       this.loginForm = this.formBuilder.group({
-          username: ['victor118-1', Validators.required],
-          password: ['P5JYxZyUTkoqzPvr7CFuv8siHd7YfGb91X8oKhTYERECcYiPPeHZ', Validators.required]
+          username: ['', Validators.required],
+          password: ['', Validators.required]
       });
     console.log("Login component !");
     // setTimeout(()=>{

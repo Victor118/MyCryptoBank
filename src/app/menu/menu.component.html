@@ -6,55 +6,19 @@
         <a routerLink="/wallet/dashboard" routerLinkActive="active-menuitem"><i class="fa fa-home fa-fw"></i><span>Dashboard</span></a>
        
       </li>
-      <li id="menuform:pm_menu" role="menuitem" class="">
-        <a href="#"><i class="fa fa-cog fa-fw"></i><span>Menu Modes</span><i class="fa fa-fw fa-angle-down"></i></a>
+      <li id="menuform:pm_dashboard" role="menuitem" class="active-menuitem">
+        <a routerLink="/wallet/transfert" routerLinkActive="active-menuitem"><i class="fa fa-home fa-fw"></i><span>Send</span></a>
        
-        <ul role="menu">
-          <li id="menuform:pm_static_menu" role="menuitem">
-            <a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:pm_static_menu':'menuform:pm_static_menu'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-bars fa-fw"></i><span>Static Menu</span></a>
-           
-          </li>
-          <li id="menuform:pm_overlay_menu" role="menuitem">
-            <a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:pm_overlay_menu':'menuform:pm_overlay_menu'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-bars fa-fw"></i><span>Overlay Menu</span>
-            </a>
-            
-          </li>
-          <li id="menuform:pm_slim_menu" role="menuitem">
-            <a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:pm_slim_menu':'menuform:pm_slim_menu'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-bars fa-fw"></i><span>Slim Menu</span>
-            </a>
-            
-          </li>
-          <li id="menuform:pm_light_menu" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:pm_light_menu':'menuform:pm_light_menu'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-sun-o fa-fw"></i><span>Light Menu</span>
-          </a>
-
-          </li>
-          <li id="menuform:pm_dark_menu" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:pm_dark_menu':'menuform:pm_dark_menu'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-moon-o fa-fw"></i><span>Dark Menu</span>
-          </a>
-          
-        </li>
-      </ul>
-    </li>
-    <li id="menuform:pm_layout_colors" role="menuitem" class="">
-      <a href="#"><i class="fa fa-dashboard fa-fw"></i><span>Layout Colors</span><i class="fa fa-fw fa-angle-down"></i>
-      </a>
-     
-      <ul role="menu">
-        <li id="menuform:pm_layout_colors_flat" role="menuitem" class="">
-          <a href="#"><i class="fa fa-circle fa-fw"></i><span>Flat</span><i class="fa fa-fw fa-angle-down"></i></a>
-          
-          <ul role="menu">
-            <li id="menuform:pm_layout_default" role="menuitem"><a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:pm_layout_default':'menuform:pm_layout_default'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-paint-brush fa-fw"></i><span>Default</span></a>
-             
-            </li>
-            <li id="menuform:pm_layout_blue" role="menuitem">
-              <a href="#" onclick="PrimeFaces.addSubmitParam('menuform',{'menuform:pm_layout_blue':'menuform:pm_layout_blue'}).submit('menuform');return false;PrimeFaces.onPost();"><i class="fa fa-paint-brush fa-fw"></i><span>Blue</span></a>
-              
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
+      </li>
+      <li id="menuform:pm_dashboard" role="menuitem" class="active-menuitem">
+        <a routerLink="/wallet/transfert" routerLinkActive="active-menuitem"><i class="fa fa-home fa-fw"></i><span>Receive</span></a>
+       
+      </li>
+      <li id="menuform:pm_dashboard" role="menuitem" class="active-menuitem">
+        <a routerLink="/wallet/transfert" routerLinkActive="active-menuitem"><i class="fa fa-home fa-fw"></i><span>Exchange</span></a>
+       
+      </li>
+    </ul>
   </p-scrollPanel>
 </div>
 

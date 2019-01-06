@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
       datasets: [
           {
          
-              data: [0.65, 0.59, 0.80, 0.81, 0.56, 0.55, 0.40,0.35,0.23,0.90],
+              data: [0, 0, 0, 0, 0, 0, 0,0,0,0],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -34,14 +34,14 @@ export class DashboardComponent implements OnInit {
     },
     {
       asset_type:"1.3.121",
-      symbol:"bitUSD",
+      symbol:"USD",
       balance:0,
       data:{
       labels: ['', '', '', '', '', '', '','','',''],
       datasets: [
           {
          
-              data: [65, 59, 80, 81, 56, 55, 40,35,23,90],
+              data: [0,0,0,0,0,0,0,0,0,0],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -50,14 +50,14 @@ export class DashboardComponent implements OnInit {
     },
     {
       asset_type:"1.3.113",
-      symbol:"bitCNY",
+      symbol:"CNY",
       balance:0,
       data:{
       labels: ['', '', '', '', '', '', '','','',''],
       datasets: [
           {
          
-              data: [65, 59, 80, 81, 56, 55, 40,35,23,90],
+              data: [0,0,0,0,0,0,0,0,0,0],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
       datasets: [
           {
          
-              data: [65, 59, 80, 81, 56, 55, 40,35,23,90],
+              data: [0,0,0,0,0,0,0,0,0,0],
               fill: true,
               borderColor: '#4bc0c0'
           }
@@ -89,11 +89,11 @@ export class DashboardComponent implements OnInit {
       scales: {
           yAxes: [{
               ticks: {
-                  beginAtZero:true
+                  beginAtZero:false
               }
           }]
       },
-  
+    scaleShowVerticalLines : false,
     title:{
       display:false
     },
@@ -115,7 +115,8 @@ export class DashboardComponent implements OnInit {
          
               data: [65, 59, 80, 81, 56, 55, 40],
               fill: true,
-              borderColor: '#4bc0c0'
+              borderColor: '#4bc0c0',
+              backgroundColor:"#4bc0c0"
           }
       ]
   }
@@ -143,6 +144,7 @@ export class DashboardComponent implements OnInit {
         }
       })
     }
+    
     this.assets.forEach(async(asset)=>{
       let dataCopy={
         labels: ['', '', '', '', '', '', '','','',''],
@@ -151,10 +153,11 @@ export class DashboardComponent implements OnInit {
            
                 data: [],
                 fill: true,
-                borderColor: '#4bc0c0'
+                borderColor: '#4bc0c0',
+                backgroundColor:"rgba(63,138,191,0.27)"
             }
         ]
-    }
+      }
       let dateStart = new Date();
       let dateEnd = new Date();
       for(let i =0;i<10;i++){
@@ -167,21 +170,25 @@ export class DashboardComponent implements OnInit {
         console.log(dateStartString);
         if(asset.symbol !== "bitUSD"){
           let data = await this.marketService.getTradeHistory("USD",asset.symbol,dateEndString,dateStartString);
+          console.log("resultat du market data pour "+asset.symbol+" i="+i,data);
           if(data && data.length>0){
-            console.log("resultat du market data",data);
-            dataCopy.datasets[0].data[i]=parseFloat(data[0].price);
             
-          }else if(i>0){
-            dataCopy.datasets[0].data[i]=asset.data.datasets[0].data[i-1];
+            dataCopy.datasets[0].data[9-i]=parseFloat(data[0].price);
+            
+          }else if(i<10){
+            console.log("pas de valeur, copy du precedent ");
+            dataCopy.datasets[0].data[9-i]=asset.data.datasets[0].data[9-(i-1)];
           }else{
-            dataCopy.datasets[0].data[i]=0;
+            console.log("pas de valeur copy 0")
+            dataCopy.datasets[0].data[9-i]=0;
           }
 
-          asset.data = Object.assign({}, dataCopy);
+          
         }
 
  
       }
+      asset.data = Object.assign({}, dataCopy);
       console.log("Asset data :",asset.data);
 
     });

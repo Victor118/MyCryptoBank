@@ -1,0 +1,14 @@
+<div class="transfert-wrapper">
+    <p-card class="form-transfert">
+        <div class="form-transfert-line">
+            <p-autoComplete [(ngModel)]="text" [suggestions]="results" field="name" (completeMethod)="search($event)" class="transfert-input"></p-autoComplete>
+        </div>
+        <div class="form-transfert-line">
+            <ngx-numeric-textbox min="0"></ngx-numeric-textbox>
+        </div>
+        <div class="form-transfert-line">
+            <button (click)="transfert()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Send</button>
+        </div>
+    </p-card>
+        
+</div>
